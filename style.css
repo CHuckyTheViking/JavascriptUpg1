@@ -93,8 +93,6 @@ body {
 }
 
 .form button {
-    background-color: #2495f1;
-    border: 2px solid #2495f1;
     border-radius: 4px;
     color: white;
     display: block;
@@ -104,7 +102,51 @@ body {
     width: 100%;
 }
 
+.enabled {
+    background-color: #2495f1;
+    border: 2px solid #2495f1;
+    
+}
+
+.disabled {
+    background-color: #81a2bd;
+    border: 2px solid #81a2bd;
+}
 
 
+#users {
+    display: inline-block;
+    position: relative;
+    margin-left: 3rem;
+    margin-bottom: 5rem;
+    
+}
 
+.panel, .flip {
+    padding: 10px;
+    text-align: left;
+    background-color: #eeeeee;
+    border: solid 4px#2495f1;
+    border-radius: 10px;
+}
+
+.show {
+    background-color: white;
+    font-size: 14px;
+    margin-top: .2rem;
+    margin-bottom: 1.2rem;
+    border: 2px solid #2495f1;
+    border-radius: 10px;
+}
+
+.delete {
+    background-color: rgb(255, 0, 0);
+    color: white;
+    font-size: 14px;
+    margin-top: .2rem;
+    margin-bottom: 1.2rem;
+    margin-left: 2rem;
+    border: 2px solid black;
+    border-radius: 10px;
+}
 
