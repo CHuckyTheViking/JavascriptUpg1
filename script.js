@@ -1,10 +1,5 @@
 
 
-
-
-
-
-
 // #region FormStuff
 
 class User {
@@ -46,37 +41,31 @@ var boolState = false
 
 
 let userInfo;
-const userList = []
+const userList = [User];
 
 
 form.addEventListener("change", () => {
     var btnSubmit = document.getElementById('submitBtn');
     btnSubmit.setAttribute('disabled', 'disabled');
     btnSubmit.className = 'disabled';
-    if(boolFirstName === true ) {
+    if(boolFirstName === true && boolLastName === true && boolEmail === true && boolPhone === true && boolAddress === true && boolZipCode === true && boolState === true) {
         btnSubmit.removeAttribute('disabled', 'disabled');
         btnSubmit.className = 'enabled';
         
     }
-    // && boolLastName === true && boolEmail === true && boolPhone === true && boolAddress === true && boolZipCode === true && boolState === true 
-
 })
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     userInfo = new User(`${firstname.value}`, `${lastname.value}`, `${email.value}`, `${phone.value}`, `${address.value}`, `${zipcode.value}`, `${state.value}`)
     userList.push(userInfo)
-    console.log(userInfo)
-    console.log(userList)
+
     createUserElement()
     fillPanel()
     
     document.getElementById("form").reset();
     
     console.log('form has been submitted!')
-
-    
-
 
     resetForm();
 })
@@ -163,6 +152,9 @@ function checkPhone() {
     if(phoneValue.length < 10) {
         setErrorFor(phone, 'Vänligen fyll i ditt telefonnummer')
         boolPhone = false
+    } else if (phoneValue.length > 10) {
+        setErrorFor(phone, 'Ett telefonnummer innehåller max 10 siffror')
+        boolPhone = false
     } else {
         setSuccessFor(phone);
         boolPhone = true
@@ -187,6 +179,9 @@ function checkZipCode() {
         boolZipCode = false
     } else if(zipcodeValue.length < 5) {
         setErrorFor(zipcode, 'Vänligen fyll i hela postnummret (5 siffror)')
+        boolZipCode = false
+    } else if(zipcodeValue.length > 5) {
+        setErrorFor(zipcode, 'Ett postnummer innehåller endast 5 siffror')
         boolZipCode = false
     } else {
         setSuccessFor(zipcode);
@@ -251,77 +246,32 @@ function isEmail(email) {
 
 // #endregion FormStuff
 
-
-// function createLi() {
-//     const li = document.createElement('li');
-//     const span = document.createElement('span');
-//     const pEmail = document.createElement('p');
-//     const pPhone = document.createElement('p');
-//     const pAddress = document.createElement('p');
-//     const pZipCode = document.createElement('p');
-//     const pState = document.createElement('p');
-
-//     const editBtn = document.createElement('button');
-//     editBtn.textContent = 'Redigera';
-//     const removeBtn = document.createElement('button');
-//     removeBtn.textContent = 'Ta bort';
-
-
-
-//     const name = firstname.value + ' ' + lastname.value
-
-//     span.textContent = name
-//     pEmail.textContent = email.value
-//     pPhone.textContent = phone.value
-//     pAddress.textContent = address.value
-//     pZipCode.textContent = zipcode.value
-//     pState.textContent = state.value
-
-//     li.appendChild(span);
-//     li.appendChild(pEmail);
-//     li.appendChild(pPhone);
-//     li.appendChild(pAddress);
-//     li.appendChild(pZipCode);
-//     li.appendChild(pState);
-
-//     li.appendChild(editBtn);
-//     li.appendChild(removeBtn);
-
-//     return li
-// }
+// #region Functions
 
 let userDiv;
 let flipDiv;
 let panelDiv;
 let currentDiv;
 let showBtn;
-let deleteBtn;
+
 function createUserElement() {
 
     userDiv = document.createElement('div')
     flipDiv = document.createElement('div')
     panelDiv = document.createElement('div')
     showBtn = document.createElement('button')
-    deleteBtn = document.createElement('button')
 
     flipDiv.className = "flip"
     panelDiv.className = "panel"
     showBtn.className = 'show'
-    deleteBtn.className = 'delete'
 
     userDiv.id = `${userInfo.id}`
     flipDiv.id = `${userInfo.id}-flip`
     panelDiv.id = `${userInfo.id}-panel`
 
-    deleteBtn.id = `${userInfo.id}-deletebtn`
-    deleteBtn.innerText = 'Ta bort'
-    deleteBtn.click = deleteUser(userInfo.id)
-
     showBtn.id = `${userInfo.id}-btn`
     showBtn.innerText = 'Visa mer/mindre'
     showBtn.click = clickme(userInfo.id)
-
-    
 
     flipDiv.innerText = `${userInfo.firstname} ` + `${userInfo.lastname}`
 
@@ -330,10 +280,11 @@ function createUserElement() {
     userDiv.appendChild(flipDiv)
     userDiv.appendChild(panelDiv)
     userDiv.appendChild(showBtn)
-    userDiv.appendChild(deleteBtn)
 
-
+ 
 }
+
+
 
 function fillPanel() {
   
@@ -378,10 +329,8 @@ function fillPanel() {
     panelDiv.appendChild(zipCodeElement)
     panelDiv.appendChild(stateElement)
 
-  }
+}
 
- 
-  
 
 
 function clickme (input) {    
@@ -392,9 +341,4 @@ function clickme (input) {
     })
 }
 
-function deleteUser (input) {
-    let user = User
-    console.log(user)
-    userList.splice(user, 1)
-}
-
+//#endregion Functions

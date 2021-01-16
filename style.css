@@ -125,7 +125,7 @@ body {
 .panel, .flip {
     padding: 10px;
     text-align: left;
-    background-color: #eeeeee;
+    background-color: #fff;
     border: solid 4px#2495f1;
     border-radius: 10px;
 }
@@ -139,14 +139,4 @@ body {
     border-radius: 10px;
 }
 
-.delete {
-    background-color: rgb(255, 0, 0);
-    color: white;
-    font-size: 14px;
-    margin-top: .2rem;
-    margin-bottom: 1.2rem;
-    margin-left: 2rem;
-    border: 2px solid black;
-    border-radius: 10px;
-}
 
