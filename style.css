@@ -130,13 +130,46 @@ body {
     border-radius: 10px;
 }
 
-.show {
+Button {
     background-color: white;
     font-size: 14px;
+    font-weight: 600;
     margin-top: .2rem;
     margin-bottom: 1.2rem;
-    border: 2px solid #2495f1;
+    border: 3px solid #2495f1;
     border-radius: 10px;
+    padding: .2rem;
+}
+#editBtn {
+    margin-bottom: 0;
+}
+
+.editHide {
+    visibility: hidden;
+}
+
+.editShow {
+    visibility: visible;
+}
+
+.submitHide {
+    visibility: hidden;
+}
+
+.submitShow {
+    visibility: visible;
+}
+
+#editUserBtn {
+    margin-top: 0;
+    border-radius: 4px;
+    color: white;
+    display: block;
+    font-family: inherit;
+    font-size: 16px;
+    width: 100%;
+    background-color: rgb(163, 163, 24);
+    border: 3px solid #2495f1;
 }
 
 
